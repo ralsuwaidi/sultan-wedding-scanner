@@ -14,7 +14,7 @@ function App() {
   } = useTicketManagement();
 
   return (
-    <div className='bg-black'>
+    <div className='bg-black  '>
       <QRScanner onScan={handleScan} />
       <Modal
         content={modalContent}

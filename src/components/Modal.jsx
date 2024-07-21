@@ -1,57 +1,41 @@
 // src/components/Modal.js
 
 import React from 'react';
+import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 function Modal({ content, scannedValue, onClose }) {
-    const textColor = content.type === 'success' ? 'text-green-800' :
-        content.type === 'error' ? 'text-red-800' : 'text-gray-800';
-
-    const isScannedBefore = content.message.toLowerCase().includes('scanned before');
+    const isScannedBefore = content.message.toLowerCase().includes('scanned before') || content.message.toLowerCase().includes('error');
 
     return (
         <dialog className="modal" id="my_modal_1">
             <div className="modal-box">
-                {isScannedBefore && (
-                    <div role="alert" className="alert alert-error">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 shrink-0 stroke-current"
-                            fill="none"
-                            viewBox="0 0 24 24">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>Error! Ticket has been scanned before.</span>
+                <div>
+                    <div className={`mx-auto flex h-12 w-12 items-center justify-center rounded-full ${isScannedBefore ? 'bg-red-100' : 'bg-green-100'}`}>
+                        {isScannedBefore ? (
+                            <XMarkIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
+                        ) : (
+                            <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
+                        )}
                     </div>
-                )}
-
-                {!isScannedBefore && (
-                    <div role="alert" className="alert alert-success">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 shrink-0 stroke-current"
-                            fill="none"
-                            viewBox="0 0 24 24">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>Success</span>
+                    <div className="mt-3 text-center sm:mt-5">
+                        <h3 className="text-base font-semibold leading-6 text-gray-900">
+                            {isScannedBefore ? 'Scan Failed' : 'Scan Successful'}
+                        </h3>
+                        <div className="mt-2">
+                            <p className="text-sm text-gray-500">
+                                {content.message}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                                Ticket Number: {scannedValue}
+                            </p>
+                        </div>
                     </div>
-                )}
-
-                <p>{content.message}</p>
-                <p>Ticket Number: {scannedValue}</p>
-                <div className="modal-action">
+                </div>
+                <div className="mt-5 sm:mt-6">
                     <form method="dialog">
                         <button
-                            className="btn btn-primary"
                             onClick={onClose}
+                            className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
                             Close
                         </button>

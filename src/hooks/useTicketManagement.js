@@ -16,8 +16,7 @@ export function useTicketManagement() {
     const handleReset = () => {
         setScannedValue(null);
         setModalContent({ type: '', message: '' });
-        window.location.reload();
-
+        fetchTickets()
     };
 
     const handleScan = async (result) => {
@@ -26,6 +25,7 @@ export function useTicketManagement() {
 
             const value = result[0].rawValue;
             setScannedValue(value);
+            console.log(tickets)
             const { modalContent, scanedTimes } = await scanTicket(value, tickets);
             setModalContent(modalContent);
             setScanedTimes(scanedTimes);
