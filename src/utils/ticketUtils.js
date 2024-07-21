@@ -52,7 +52,7 @@ async function createTicket(scannedId) {
     if (error) {
         console.error('Error creating ticket:', error);
         return {
-            modalContent: { type: 'error', message: 'Error creating ticket' },
+            modalContent: { type: 'error', message: 'Ticket has been scanned before!' },
             scanedTimes: 0
         };
     }
