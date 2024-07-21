@@ -18,7 +18,7 @@ function Modal({ content, scannedValue, onClose }) {
                         )}
                     </div>
                     <div className="mt-3 text-center sm:mt-5">
-                        <h3 className="text-base font-semibold leading-6 text-gray-900">
+                        <h3 className="text-base font-semibold leading-6 text-gray-900 dark:text-white">
                             {isScannedBefore ? 'Scan Failed' : 'Scan Successful'}
                         </h3>
                         <div className="mt-2">
