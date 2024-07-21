@@ -14,7 +14,7 @@ function App() {
   } = useTicketManagement();
 
   return (
-    <div className="w-screen h-screen relative">
+    <div className="w-screen h-screen">
       <QRScanner onScan={handleScan} />
       <Modal
         content={modalContent}
