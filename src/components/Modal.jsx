@@ -22,7 +22,7 @@ function Modal({ content, scannedValue, onClose }) {
                             {isScannedBefore ? 'Scan Failed' : 'Scan Successful'}
                         </h3>
                         <div className="mt-2">
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm text-gray-500 dark:text-white">
                                 {content.message}
                             </p>
                             <p className="text-sm text-gray-500">
