@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className='bg-black  '>
-      <QRScanner onScan={handleScan} />
+      <QRScanner onScan={handleScan} scanDelay={2000} />
       <Modal
         content={modalContent}
         scannedValue={scannedValue}
